@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>01_HelloWorld</title>
+</head>
+<body>
+
+<!--
+  1. 引入Vue.js
+  2. 创建Vue对象
+    el : 指定根element(选择器)
+    data : 初始化数据(页面可以访问)
+  3. 双向数据绑定 : v-model
+  4. 显示数据 : {{xxx}}
+  5. 理解vue的mvvm实现
+-->
+
+<!-- 
+  模板: html + js  动态页面 
+  模板中的js语法:
+  1. 指令: vue自定义的标签属性, 属性名以v-开头, 属性值是一个js的表达式   v-model="msg"
+  2. 插值: 标签体文本中动态显示数据的语法 {{msg}}
+ -->
+<div id="test">
+  <input type="text" v-model="msg">
+  <p>Hello {{msg}}</p>
+</div>
+
+<p id="test2">Hello {{msg}}</p> 
+
+
+<script src="../js/vue.js"></script>
+<script>
+  // 创建Vue的实例对象
+  new Vue({ // 配置对象: 属性名是一些特定的
+    el: '#test', // element, 值是一个选择器, 用来指定模板的根元素
+    data: { // 对象: 为模板提供数据
+      msg: 'atguigu'
+    }
+  })
+
+  const vm = new Vue({
+    el: '#test2',
+    // 相当于react中state
+    data () {
+      return { // data对象
+        msg: 'xfzhang', 
+        xxx: {}
+      }
+    }
+  })
+
+  // 数据代理: vm代理了对data中数据的操作(读/写)
+  console.log(vm, vm.msg) // 读取是data对象上的msg属性值
+
+  setTimeout(() => {
+    // 编程上改的是vm上的msg属性的值
+    vm.msg = 'xfzhang222'  // 数据会自动被保存到data对象的msg上
+  }, 4000);
+
+</script>
+</body>
+</html>

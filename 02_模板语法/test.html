@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>02_模板语法</title>
+</head>
+<body>
+<!--
+1. 模板的理解:
+  动态的html页面
+  包含了一些JS语法代码
+    双大括号表达式
+    指令(以v-开头的自定义标签属性)
+2. 双大括号表达式
+  语法: {{exp}} 或 {{{exp}}}
+  功能: 向页面输出数据
+  可以调用对象的方法
+3. 指令一: 强制数据绑定
+  功能: 指定变化的属性值
+  完整写法:
+    v-bind:xxx='yyy'  //yyy会作为表达式解析执行
+  简洁写法:
+    :xxx='yyy'
+4. 指令二: 绑定事件监听
+  功能: 绑定指定事件名的回调函数
+  完整写法:
+    v-on:click='xxx'
+  简洁写法:
+    @click='xxx'
+-->
+
+<div id="app">
+  <h2>1. 双大括号表达式(插值)</h2>
+  <p>{{content}}</p>
+  <p>{{content.toUpperCase()}}</p>
+
+  <h2>2. 指令一: 强制数据绑定</h2>
+
+  <h2>3. 指令二: 绑定事件监听</h2>
+
+</div>
+<!-- 
+  区别语句与表达式?
+    表达式: 
+        总有一个结果数据返回(表达式执行我们能得到一个结果)
+        不是一个完整的指令, 只有配合其它语法才成为完整的语句指令
+    语句: 
+        是会做处理工作的, 不返回数据
+        是一个完整的指令
+ -->
+<script>
+
+  /* function fn () {}  // 函数声明语句
+  // function () {}  // 这是一个表达式, 不能单独存在
+  const fn2 = function () {}
+  (function () {})();
+  const result = fn2()
+  fn2(); */
+</script>
+
+
+<script src="../js/vue.js"></script>
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      content: 'CBA I Love This Game!'
+    }
+  })
+</script>
+
+</body>
+</html>
